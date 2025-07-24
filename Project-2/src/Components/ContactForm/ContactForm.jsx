@@ -3,9 +3,29 @@ import './ContactForm.css'
 import Button from '../Button/Button'
 import { MdMessage } from "react-icons/md";
 import { IoCall, IoMail } from "react-icons/io5";
+import {useFormik} from "formik";
+import * as Yup from "yup";
 
 
 function ContactForm() {
+    
+    const {handleBlur,handleChange,handleSubmit,handleReset,errors,values,touched}=useFormik({
+        initialValues:{
+            name:"",
+            email:"",
+            message:""
+        },
+        validationSchema:Yup.object({
+            name:Yup.string().trim().required("Name is required").min(3,"Name must be at least 3 characters"),
+            email:Yup.string().email("Invalid email format").required("Email is required").trim(),
+            message:Yup.string().trim().required("Message is required")
+        }),
+        onSubmit:(val,{resetForm})=>{
+            console.log(val);
+            resetForm();
+        }
+    })
+    
     return (
         <section className='containerr'>
             <div className="form-wrapper">
@@ -14,25 +34,28 @@ function ContactForm() {
                     <Button text="VIA CALL" icon={<IoCall fontSize="24px" />} />
                 </div>
                 <Button isOutline={true} text="VIA EMAIL" icon={<IoMail fontSize="24px" />} />
-                <form className='form' >
+                <form className='form' onSubmit={handleSubmit} onReset={handleReset} >
                     <div className="form-control">
                         <label htmlFor="name">Name</label>
-                        <input type="text" />
+                        <input type="text" onChange={handleChange} onBlur={handleBlur} value={values.name} name="name" />
                     </div>
+                    <div className="error" style={{color:"red"}}>{touched.name && errors.name ? errors.name : null}</div>
                     <div className="form-control">
                         <label htmlFor="email">E-Mail</label>
-                        <input type="email" />
+                        <input type="email" onChange={handleChange} onBlur={handleBlur} value={values.email} name="email" />
                     </div>
+                    <div className="error" style={{color:"red"}}>{touched.email && errors.email ? errors.email : null}</div>
                     <div className="form-control">
                         <label htmlFor="message">Text</label>
-                        <textarea type="message" />
+                        <textarea type="message" onChange={handleChange} onBlur={handleBlur} value={values.message} name="message" />
                     </div>
-                    <div className="button-wrapper">
+                    <div className="error" style={{color:"red"}}>{touched.message && errors.message ? errors.message : null}</div>
+                    <div className="button-wrapper " style={{marginBottom:"8px"}}>
                         <Button text="Submit Button" />
                     </div>
                 </form>
             </div>
-            <div className='contact-img'>
+            <div className='contact-img' >
                     <img src="/images/Hero.svg" alt="" />
              </div>
         </section>
