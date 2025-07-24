@@ -1,0 +1,9 @@
+/* index.css */
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.container{
+  width: 1280px;
+  margin: 0 auto;
+}

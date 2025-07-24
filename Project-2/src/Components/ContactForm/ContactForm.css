@@ -1,0 +1,62 @@
+.containerr{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap:81px;
+    margin-top: 40px;
+    align-items: end;
+}
+
+.contact-form{
+    display: flex;
+    gap:32px;
+    margin-bottom: 17px;
+}
+
+.form{
+    padding:  0 0 0 3px;
+    
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 15px;
+}
+
+.form-control input{
+   width: 440px;
+   padding: 0 10px;
+   height: 50px;
+   
+}
+
+.form-control textarea{
+   width: 440px;
+   padding: 0 10px;
+   height: 120px;
+   
+}
+
+.form-control label{
+  position: absolute;
+  top: -10px;
+  left: 25px;
+  background-color: #fff;
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+.form .button-wrapper{
+    margin-top: 17px;
+    margin-left: 242px;
+}
+
+.containerr .contact-img{
+    width: 575px;
+}
+
+.containerr .contact-img img{
+    width: 100%;
+}
