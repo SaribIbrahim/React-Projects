@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+}
+:root{
+    --red:#D01C28;
+}
+
+.container{
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.hero{
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 72px);
+}
+
+.hero .hero-content{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding-left: 40px;
+}
+
+.hero .hero-content h1{
+    font-weight: 800;
+    font-size: 108px;
+    line-height: 102px;
+}
+.hero .hero-content p{
+    font-weight: 600;
+    font-size: 16px;
+    color: gray;
+}
+
+.hero .hero-content .hero-btn{
+    display: flex;
+    gap: 40px;
+    font-size: 24px;
+}
+
+.hero .hero-content .hero-btn .shop-now{
+    all: unset;
+    background-color: var(--red);
+    padding: 6px 16px;
+    height: 32px;
+    color: white;
+    font-weight: 500;
+}
+
+.hero .hero-content .hero-btn .category{
+    all: unset;
+    background-color:transparent;
+   border: 1px solid #5A5959;
+   padding: 6px 16px;
+   height: 32px;
+   font-weight: 500;
+}
+
+.hero .hero-content .links p{
+   font-weight: 400;
+   margin-bottom: 8px;
+}
+.hero .hero-content .links .brand-icons{
+    display: flex;
+    gap: 16px;
+}

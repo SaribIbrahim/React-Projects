@@ -1,0 +1,9 @@
+# Ignore node_modules and dist in all projects
+**/node_modules
+**/dist
+**/.env
+
+# System files
+.DS_Store
+Thumbs.db
+.vscode
