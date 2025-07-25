@@ -1,0 +1,47 @@
+.error-text {
+  margin-top: 40px;
+  margin-bottom: 0px;
+  width: 100%;
+  font-size: 24px;
+  color: red;
+  text-align: center;
+}
+
+.box-wrapper {
+  width: 100%; /* changed from fixed width */
+  margin-top: 10px;
+  padding-left: 95px;
+  padding-right: 15px; 
+
+}
+
+
+.text {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 16px;
+    text-align: center;
+}
+
+/* Responsive font sizing */
+@media (max-width: 768px) {
+  .text {
+    font-size: 20px;
+  }
+  .error-text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .text {
+    font-size: 18px;
+  }
+   .error-text {
+    font-size: 18px;
+  }
+}
+
+
+
+

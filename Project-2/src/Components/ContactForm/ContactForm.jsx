@@ -5,10 +5,16 @@ import { MdMessage } from "react-icons/md";
 import { IoCall, IoMail } from "react-icons/io5";
 import {useFormik} from "formik";
 import * as Yup from "yup";
+import {Link,useNavigate} from "react-router-dom"
+import FormSuccess from '../FormSuccess/FormSuccess';
 
 
-function ContactForm() {
+
+function ContactForm({setFormData}) {
     
+    const navigate = useNavigate();
+
+
     const {handleBlur,handleChange,handleSubmit,handleReset,errors,values,touched}=useFormik({
         initialValues:{
             name:"",
@@ -21,8 +27,9 @@ function ContactForm() {
             message:Yup.string().trim().required("Message is required")
         }),
         onSubmit:(val,{resetForm})=>{
-            console.log(val);
+            setFormData((prevData)=>[...prevData,val]);
             resetForm();
+             navigate("/form-success", { state: val }); 
         }
     })
     
@@ -51,7 +58,7 @@ function ContactForm() {
                     </div>
                     <div className="error" style={{color:"red"}}>{touched.message && errors.message ? errors.message : null}</div>
                     <div className="button-wrapper " style={{marginBottom:"8px"}}>
-                        <Button text="Submit Button" />
+                        <Button text="Submit Button" type="submit"/>
                     </div>
                 </form>
             </div>

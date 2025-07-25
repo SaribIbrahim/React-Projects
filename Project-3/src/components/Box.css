@@ -1,0 +1,42 @@
+.Box {
+  width: 72px;
+  height: 72px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.Box:hover {
+  background-color: black;
+  color: white;
+  transition: background-color 0.4s ease-in;
+}
+
+.Box h1 {
+  font-size: 24px;
+  font-weight: 700;
+  transition: background-color 0.3s ease-in;
+}
+
+.Box.selected {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}
+
+/* Responsive: Reduce box size on smaller screens */
+@media (max-width: 576px) {
+  .Box {
+    width: 56px;
+    height: 56px;
+    margin-right: 12px;
+  }
+
+  .Box h1 {
+    font-size: 20px;
+  }
+}

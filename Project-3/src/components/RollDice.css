@@ -1,0 +1,20 @@
+.dice-wrapper{
+    display: flex;
+    margin-top: 48px;
+     flex-direction: column;
+     align-items: center;
+   
+
+}
+
+.dice-wrapper .dice{
+    cursor: pointer;
+   
+
+}
+
+.dice-wrapper p{
+    font-size: 24px;
+    margin-top: 15px;
+    font-weight: 500;
+}

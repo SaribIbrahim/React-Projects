@@ -1,0 +1,29 @@
+.score {
+  margin-top: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score h2 {
+  font-size: 100px;
+  height: 112px;
+}
+
+.score p {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Responsive: Shrink font sizes on small screens */
+@media (max-width: 576px) {
+  .score h2 {
+    font-size: 64px;
+  }
+
+  .score p {
+    font-size: 18px;
+  }
+}
