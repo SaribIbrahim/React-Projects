@@ -1,12 +1,44 @@
-# React + Vite
+# 🎲 Dice Game – React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and fun dice game built with **React** and **Vite**.
 
-Currently, two official plugins are available:
+## 🚀 How to Play
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Pick a number between **1–6**
+- Click on the **dice image** to roll it
+- If the rolled number matches your selected number:
+  - ✅ You **gain 1 point**
+- If not:
+  - ❌ You **lose 2 points**
 
-## Expanding the ESLint configuration
+You can keep playing and your score will keep updating. There are buttons to:
+- 🔄 **Reset the score**
+- 📜 **Show/Hide game rules**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- ⚛️ React
+- ⚡ Vite
+- 💅 CSS (Responsive)
+
+---
+
+## 📂 Vercel Link
+
+https://dice-game-bice-eta.vercel.app/
+
+## 📂 Project Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+
