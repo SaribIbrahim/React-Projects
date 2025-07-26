@@ -1,0 +1,92 @@
+
+.main-container{
+    max-width: 1200px;
+    margin: 0 auto
+}
+
+.main-container .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    min-height: 140px;
+
+}
+
+.main-container .container .search input{
+
+    background-color: transparent;
+    border: 1px solid red;
+    color: white;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.main-container .container .search input::placeholder {
+  color:white; 
+  
+}
+
+.main-container .filter-buttons{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.main-container .filter-buttons button{
+    background-color: #ff4343;
+    border-radius: 5px;
+    padding: 6px 16px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.main-container .filter-buttons button:hover{
+    background-color: #840e0e;
+}
+
+.isSelected{
+    background-color: white!important;
+    color: black!important;
+}
+
+@media (max-width: 546px) {
+  .main-container .container {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center; /* optional: aligns items to the left on smaller screens */
+  }
+
+  .main-container .container .search input {
+    width: 100%; /* full width of parent */
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .main-container .filter-buttons {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .main-container .filter-buttons button {
+    width: 60%;
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .main-container .container .search input {
+    font-size: 13px;
+  }
+
+  .main-container .container {
+    padding: 8px;
+  }
+}
+
+
+
