@@ -8,7 +8,7 @@ function App() {
    const [isGameStarted,setIsGameStarted]=useState(false)
 
    const toggleGamePlay=  ()=>{
-    setIsGameStarted(items=>!items)
+    setIsGameStarted(prev=>!prev)
    }
 
   return (
