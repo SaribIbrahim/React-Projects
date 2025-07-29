@@ -10,12 +10,11 @@ import AddAbdUpdateModal from "./components/AddAbdUpdateModal";
 import useCustom from "./hooks/Custom.js";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify'
+import NotFoundContact from "./components/NotFoundContact.jsx";
 
 function App() {
   const [contacts, setContacts] = useState([]);
   const { isOpen, onClose, onOpen } = useCustom();
-
-  
 
   const getData = async () => {
       const contactsRef = collection(db, "contacts");
@@ -81,9 +80,9 @@ function App() {
           />
         </div>
         <div>
-          {contacts.map((contact) => (
+          {contacts.length<=0?(<NotFoundContact/>):( contacts.map((contact) => (
             <Contact key={contact.id} contact={contact} />
-          ))}
+          )))}
         </div>
       </div>
       <AddAbdUpdateModal isOpen={isOpen} onClose={onClose} />
