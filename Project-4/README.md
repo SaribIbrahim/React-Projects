@@ -89,9 +89,7 @@ http://localhost:9000/images/<image-name>
 
 ---
 
-## 📸 Preview
 
-*Include screenshots here if you'd like*
 
 ---
 
