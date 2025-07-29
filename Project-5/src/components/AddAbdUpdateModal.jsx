@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Modal from './Modal'
 import { useFormik } from "formik"
 import * as Yup from "yup"
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 
 export default function AddAbdUpdateModal({ isOpen, onClose, isUpdate, contact }) {
 
-    const addConatact = async (contact) => {
+    const addContact = async (contact) => {
         try {
             const contactRef = collection(db, "contacts")
             await addDoc(contactRef, contact)
@@ -21,7 +21,7 @@ export default function AddAbdUpdateModal({ isOpen, onClose, isUpdate, contact }
         }
     }
 
-    const updateConatact = async (contact, id) => {
+    const updateContact = async (contact, id) => {
         try {
             const contactRef = doc(db, "contacts", id)
             await updateDoc(contactRef, contact)
@@ -33,7 +33,7 @@ export default function AddAbdUpdateModal({ isOpen, onClose, isUpdate, contact }
         }
     }
 
-    const { handleChange, handleSubmit, handleBlur, values, errors, touched, } = useFormik({
+    const { handleChange, handleSubmit, handleBlur, values, errors, touched, resetForm } = useFormik({
         initialValues: isUpdate ? {
             name: contact.name,
             email: contact.email
@@ -49,10 +49,11 @@ export default function AddAbdUpdateModal({ isOpen, onClose, isUpdate, contact }
                 .email("Invalid email format")
                 .required("Email is required")
         }),
-        onSubmit: (values) => {
+        onSubmit: (values, { resetForm }) => {
             console.log(values);
-            isUpdate ? updateConatact(values, contact.id) : addConatact(values)
-            onClose();
+            isUpdate ? updateContact(values, contact.id) : addContact(values);
+            resetForm(); // this resets the form fields
+            onClose();   // this closes the modal
         }
 
 
