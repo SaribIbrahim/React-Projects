@@ -1,0 +1,35 @@
+.card {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-image: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet) 1;
+  box-shadow: 0 0 20px 2px rgba(255, 0, 255, 0.6);
+  animation: rgbGlow 3s linear infinite;
+  background-color: #fff;
+}
+
+@keyframes rgbGlow {
+  0% {
+    box-shadow: 0 0 10px red;
+  }
+  20% {
+    box-shadow: 0 0 10px orange;
+  }
+  40% {
+    box-shadow: 0 0 10px yellow;
+  }
+  60% {
+    box-shadow: 0 0 10px green;
+  }
+  80% {
+    box-shadow: 0 0 10px blue;
+  }
+  100% {
+    box-shadow: 0 0 10px violet;
+  }
+}

@@ -33,7 +33,7 @@ export default function AddAbdUpdateModal({ isOpen, onClose, isUpdate, contact }
         }
     }
 
-    const { handleChange, handleSubmit, handleBlur, values, errors, touched, resetForm } = useFormik({
+    const { handleChange, handleSubmit, handleBlur, values, errors, touched } = useFormik({
         initialValues: isUpdate ? {
             name: contact.name,
             email: contact.email

@@ -7,6 +7,7 @@ import { deleteDoc, doc } from 'firebase/firestore';
 import AddAbdUpdateModal from './AddAbdUpdateModal';
 import useCustom from '../hooks/Custom.js'
 import { toast } from 'react-toastify';
+import "./Contact.css"
 
 
 function Contact({ contact }) {
@@ -26,7 +27,7 @@ function Contact({ contact }) {
 
   return (
     <>
-      <div key={contact.id} className="bg-yellow flex justify-between items-center p-2 rounded-lg mb-3">
+      <div key={contact.id} className="bg-yellow flex justify-between items-center p-2 rounded-lg mb-3 card">
         <div className="flex gap-1">
           <HiOutlineUserCircle className="text-4xl text-orange" />
           <div className="">
