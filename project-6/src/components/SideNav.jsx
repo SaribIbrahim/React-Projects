@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Box, Heading, HStack, Icon, Stack, Text } from "@chakra-ui/react"
 import { RxDashboard } from "react-icons/rx";
 import { GoArrowSwitch } from "react-icons/go";
@@ -20,8 +20,9 @@ function SideNav() {
     ]
 
     return (
-        <Stack boxShadow="lg" w="256px" h="100vh" justifyContent="space-between">
-            <Box>
+        <Stack  w="256px" h={{ base:"90vh", lg:"100vh" }} justifyContent="space-between" boxShadow={{
+            base: "none", lg:"lg"}}  >
+            <Box> 
                 <Heading as="h1" fontSize="20px" pt="56px" textAlign="center">@SARIB-IBRAHIM</Heading>
                 <Box mt="24px" px="3"  >
                     {
@@ -40,7 +41,9 @@ function SideNav() {
                     }
                 </Box>
             </Box>
-            <Box mt="24px" px="3" mb="24px" >
+            <Box mt="24px" px="3" mb={{
+                base:"none",lg:"24px"
+            }} >    
                 <HStack py="12px" px="16px" color="#797E82" borderRadius="10px"
                     _hover={{
                         bg: "#F3F3F7",
