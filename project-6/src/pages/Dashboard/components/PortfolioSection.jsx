@@ -6,8 +6,8 @@ import { LuArrowUpToLine } from "react-icons/lu";
 function PortfolioSection() {
     return (
         <>
-            <HStack p="24px" bg="white" borderRadius="xl" spacing={16} justify="space-between" >
-                <HStack spacing={10}>
+            <HStack p="24px" bg="white" borderRadius="xl" justify="space-between" flexDirection={{base:"column",xl:"row"}} align={{base:"flex-start",xl:"center"}} >
+                <HStack spacing={{base:"16px",xl:"30px",}} flexDirection={{base:"column",xl:"row"}} align={{base:"flex-start",xl:"center"}} >
                     <Stack>
                         <HStack color="black.80" >
                             <Text fontSize="sm"  >
@@ -15,7 +15,7 @@ function PortfolioSection() {
                             </Text>
                             <Icon as={AiOutlineInfoCircle} />
                         </HStack>
-                        <Text textStyle="h2">
+                        <Text textStyle="h2" fontWeight="medium">
                             $ 109,897.20
                         </Text>
                     </Stack>
@@ -25,30 +25,30 @@ function PortfolioSection() {
                                 Wallet Balances
                             </Text>
                         </HStack>
-                        <HStack spacing={5}>
+                        <HStack  spacing={4} flexDirection={{base:"column",sm:"row"}} align={{base:"flex-start",sm:"center"}}>
                             <HStack>
-                                <Text textStyle="h2">
+                                <Text textStyle="h2" fontWeight="medium">
                                     22.39401000
                                 </Text>
                                 <Tag colorScheme="gray">BTC</Tag>
                             </HStack>
                             <HStack>
-                                <Text textStyle="h2">
+                                <Text textStyle="h2" fontWeight="medium">
                                     $ 1200.31
                                 </Text>
                                 <Tag colorScheme="gray">USD</Tag>
                             </HStack>
                         </HStack>
                     </Stack>
-                </HStack>
-                <HStack>
+                </HStack>{/* Content */}
+                <HStack >
                     <HStack>
                         <Button leftIcon={<Icon as={LuArrowDownToLine} />}>   Deposit</Button>
                     </HStack>
                     <HStack>
                         <Button leftIcon={<Icon as={LuArrowUpToLine} />}>Withdraw</Button>
                     </HStack>
-                </HStack>
+                </HStack>{/* Buttons */}
             </HStack> {/* Portfolio Section */}
         </>
     )
