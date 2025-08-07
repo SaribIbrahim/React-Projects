@@ -3,6 +3,7 @@ import DashboardLayout from "../../components/DashboardLayout"
 import PortfolioSection from "./components/PortfolioSection"
 import PriceSection from "./components/PriceSection"
 import { Grid } from "@chakra-ui/react"
+import Transactions from "./components/Transactions"
 
 
 function Dashboard() {
@@ -19,6 +20,10 @@ function Dashboard() {
          {/* Price section spans one column (half width on md+) */}
         <GridItem colSpan={1}>
           <PriceSection/>
+        </GridItem>
+
+        <GridItem colSpan={1}>
+          <Transactions/>
         </GridItem>
       </Grid>
      </DashboardLayout>
