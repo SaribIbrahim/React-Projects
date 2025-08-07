@@ -16,7 +16,7 @@ function DashboardLayout({title,children}) {
           <Box flexGrow={1}>
             <TopNav title={title} onOpen={onOpen} />
             <SideDrawer isOpen={isOpen} onClose={onClose} />
-            <Container maxW="70rem" mt="24px" >{children}</Container>
+            <Container maxW="70rem" mt="24px">{children}</Container>
           </Box>
         </Flex>
     </div>
