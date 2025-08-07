@@ -37,7 +37,7 @@ function Transactions() {
                 {
                     transactions.map((transactions, index) => (
                         <Fragment key={transactions.id} >
-                            {index != 0 && <Divider />}
+                            {index != 0 && <Divider />}{/* For line between transactions */}
                             <Flex gap={4}>
                                 <Grid placeItems="center" bg="black.5" boxSize={10} borderRadius="full">
                                     <Icon as={transactions.icon} />

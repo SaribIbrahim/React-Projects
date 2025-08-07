@@ -20,7 +20,7 @@ function SideNav() {
     ]
 
     return (
-        <Stack  w="256px" h={{ base:"90vh", lg:"100vh" }} justifyContent="space-between" boxShadow={{
+        <Stack  w="256px" h={{ base:"90vh", lg:"100%" }} justifyContent="space-between" boxShadow={{
             base: "none", lg:"lg"}} bg="white"  >
             <Box> 
                 <Heading as="h1" fontSize="20px" pt="56px" textAlign="center">@SARIB-IBRAHIM</Heading>
