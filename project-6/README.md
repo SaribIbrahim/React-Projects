@@ -1,12 +1,34 @@
-# React + Vite
+# 📊 React Dashboard App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, modern dashboard built with **React**, **Vite**, and **Chakra UI**, featuring routing, reusable components, and smooth animations. This project is part of the "React 10 Projects" series.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **📂 Multiple Pages**
+  - Dashboard (main view)
+  - Transactions page
+  - Support page
+- **🎨 Chakra UI Components** for consistent, responsive design
+- **🖼 SVG & Icon Support** with `react-icons`
+- **⚡ Fast Development** using Vite
+- **🎭 Smooth Animations** with Framer Motion
+- **🔗 Client-side Routing** via React Router DOM
+- **🛠 Reusable Components** like Side Navigation, Top Navigation, and Custom Cards
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+- **Frontend Framework:** React 18
+- **Build Tool:** Vite
+- **UI Library:** Chakra UI
+- **Animations:** Framer Motion
+- **Routing:** React Router DOM
+- **Icons:** React Icons
+- **Styling:** Emotion
+
+---
+
+
