@@ -53,7 +53,7 @@ function Transactions() {
               <InputLeftElement pointerEvents="none">
                 <Icon as={BsSearch} />
               </InputLeftElement>
-              <Input type="tel" placeholder="Search..." />
+              <Input type="text" placeholder="Search..." />
             </InputGroup>       
           </TabList>
           <TabPanels>
