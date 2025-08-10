@@ -49,7 +49,6 @@ const { mutate,isLoading}=  useMutation({
     onSubmit: (values,{resetForm}) => {
       mutate(values)
       resetForm();
-      console.log(mutate); 
     },
   });
 

@@ -10,3 +10,13 @@ export const signInUser=async({password,email})=>{
         throw Error(error.response.data.message)
     }
 }
+
+export const signUpUser=async({password,email,firstName,lastName})=>{
+    try{
+        const {data}=await Axios.post(`${USER_URL}/signup`,{password,email,firstName,lastName})
+        return data
+    }
+    catch(error){
+        throw Error(error.response.data.message)
+    }
+}

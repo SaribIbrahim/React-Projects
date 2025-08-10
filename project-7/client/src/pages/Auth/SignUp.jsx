@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+
 import {
    Container, Center, Text, Stack,
-  FormControl, FormLabel, Input, Flex, Checkbox, Button, FormErrorMessage
+  FormControl, FormLabel, Input, Flex, Checkbox, Button, FormErrorMessage,useToast
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Card from "../../components/Card.jsx"
+import { useMutation } from 'react-query';
+import { signUpUser } from '../../api/query/userQuery.js';
+
 
 
 const validationSchema = Yup.object({
-  name: Yup.string()
+  firstName: Yup.string()
     .required("First name is required"),
-  lastname: Yup.string()
+  lastName: Yup.string()
     .required("Last name is required"),
   email: Yup.string()
     .email("Invalid email address")
@@ -26,25 +29,46 @@ const validationSchema = Yup.object({
 });
 
 function SignUp() {
+   
+  const navigate=useNavigate();
+  const toast=useToast();
+
+  const { mutate,isLoading}=  useMutation({
+      mutationKey:["signup"],
+      mutationFn:signUpUser,
+      onSuccess:(data)=>{
+      navigate("/email-verification")
+      },
+      onError:(error)=>{
+        toast({
+          title:"Signup Error",
+          description:error.message,
+          status:"error"
+        })
+      }  
+    })
+  
   const {
     handleBlur, handleChange, handleSubmit, values, touched, errors } = useFormik({
     initialValues: {
-      name: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       repeatpassword: '',
     },
     validationSchema,
     onSubmit: (values,{resetForm}) => {
-      console.log("Form submitted:", values);
-      setformData(values);
+      mutate({
+        firstName:values.firstName,
+        lastName:values.lastName,
+        email:values.email,
+        password:values.password
+      });
       resetForm();
       
     },
   });
-
-  const [formData,setformData]=useState({});
   
 
   return (
@@ -60,28 +84,28 @@ function SignUp() {
             <Stack mt={"10"} spacing={"6"}>
               {/* Name + Lastname */}
               <Flex gap={"6"} flexDir={{ base: "column", sm: "row" }}>
-                <FormControl isInvalid={touched.name && !!errors.name}>
-                  <FormLabel htmlFor="name">Name</FormLabel>
+                <FormControl isInvalid={touched.firstnNme && !!errors.firstName}>
+                  <FormLabel htmlFor="firstName">Name</FormLabel>
                   <Input
-                    name="name"
+                    name="firstName"
                     placeholder="Enter Your Name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.name}
+                    value={values.firstName}
                   />
-                  <FormErrorMessage>{errors.name}</FormErrorMessage>
+                  <FormErrorMessage>{errors.firstName}</FormErrorMessage>
                 </FormControl>
 
-                <FormControl isInvalid={touched.lastname && !!errors.lastname}>
-                  <FormLabel htmlFor="lastname">Last Name</FormLabel>
+                <FormControl isInvalid={touched.lastName && !!errors.lastName}>
+                  <FormLabel htmlFor="lastName">Last Name</FormLabel>
                   <Input
-                    name="lastname"
+                    name="lastName"
                     placeholder="Enter Your Last Name"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.lastname}
                   />
-                  <FormErrorMessage>{errors.lastname}</FormErrorMessage>
+                  <FormErrorMessage>{errors.lastName}</FormErrorMessage>
                 </FormControl>
               </Flex>
 
@@ -136,7 +160,7 @@ function SignUp() {
               </Checkbox>
 
               {/* Submit Button */}
-              <Button type="submit" colorScheme="purple">
+              <Button isLoading={isLoading} type="submit" colorScheme="purple">
                 Create an account
               </Button>
 
