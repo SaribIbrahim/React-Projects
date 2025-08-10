@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import {
-  Card, Container, Center, Text, Stack,
+   Container, Center, Text, Stack,
   FormControl, FormLabel, Input, Flex, Checkbox, Button, FormErrorMessage
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Card from "../../components/Card.jsx"
 
 
 const validationSchema = Yup.object({
@@ -49,7 +50,7 @@ function SignUp() {
   return (
     <Container>
       <Center minH={"100vh"}>
-        <Card borderRadius={"16px"} p={6} w="456px">
+        <Card>
           <Text textStyle={"h1"}>Welcome to CryptoApp</Text>
           <Text textStyle={"p2"} color={"black.60"} mt={"4"}>
             Create a free account by filling data below
@@ -143,7 +144,7 @@ function SignUp() {
               <Flex justify={"center"}>
                 <Text textStyle={"p3"}>
                   Already have an account?
-                  <Link to="/sign-in">
+                  <Link to="/signin">
                     <Text as="span" color={"p.purple"}> Sign In</Text>
                   </Link>
                 </Text>
