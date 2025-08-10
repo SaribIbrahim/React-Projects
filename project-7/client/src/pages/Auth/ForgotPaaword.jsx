@@ -1,14 +1,36 @@
-import { Icon, Text, Button, Center, Stack, FormControl, FormLabel, Input,  FormErrorMessage } from '@chakra-ui/react'
+import { Icon, Text, Button, Center, Stack, FormControl, FormLabel, Input, FormErrorMessage, useToast } from '@chakra-ui/react'
 import Card from "../../components/Card.jsx"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import { sendForgotMail } from '../../api/query/userQuery.js';
+import { useState } from 'react';
 
 
 
 function ForgotPaaword() {
+
+  const [email, setEmail] = useState("")
+  const toast = useToast()
+  const navigate = useNavigate()
+
+  const { isLoading, mutate } = useMutation({
+    mutationKey: ["forgot-mail"],
+    mutationFn: sendForgotMail,// function to call the API
+    onSuccess: (data, variables) => {
+  navigate(`/forgot-password-sent/${variables.email}`)
+}  
+    ,
+    onError: (error) => {
+      toast({
+        title: "Forgot Error",
+        description: error.message,
+        status: "error"
+      })
+    }
+  })
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -23,21 +45,22 @@ function ForgotPaaword() {
         email: '',
       },
       validationSchema,
-      onSubmit: (values, { resetForm }) => {
+      onSubmit: (values) => {
         console.log("Form submitted:", values);
-        setForgotData(values);
-        resetForm();
+        setEmail((prev) => (prev = values.email))
+        mutate({ email: values.email })
+        // resetForm();
 
       },
     });
 
-  const [forgotData, setForgotData] = useState({});
+
 
   return (
     <Center height={"100vh"}>
       <Card>
         <Link to={"/signin"} >
-          <Icon as={FaArrowLeftLong } boxSize={"24px"} mb={4}/>
+          <Icon as={FaArrowLeftLong} boxSize={"24px"} mb={4} />
         </Link>
         <Text textStyle={"h1"}>Forgot Password</Text>
         <Text textStyle={"p2"} color={"black.60"} mt={"4"}>
@@ -54,15 +77,15 @@ function ForgotPaaword() {
               <Input
                 name="email"
                 type='email'
-                placeholder="Enter Your Password"
+                placeholder="Enter Your Email"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.password}
+                value={values.email}
               />
               <FormErrorMessage>{errors.email}</FormErrorMessage>
             </FormControl>
 
-            <Button w={"full"} type='submit'>
+            <Button w={"full"} type='submit' isLoading={isLoading}>
               Reset Password
             </Button>
           </Stack>

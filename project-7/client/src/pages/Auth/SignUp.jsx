@@ -39,9 +39,7 @@ function SignUp() {
       mutationFn:signUpUser,// function to call the API
       onSuccess:(data)=>{
       if(email!=""){
-        navigate("/email-verification",{
-        state:{email}// email conatains value of email from form
-      })// navigate to email verification page with email data as state
+        navigate(`/email-verification/${email}`)// navigate to email verification page with email data as state
       }
       },
       onError:(error)=>{
@@ -73,7 +71,7 @@ function SignUp() {
       },
        {
     onSuccess: () => {
-      navigate("/email-verification", { state: { email: values.email } });
+      navigate(`/email-verification/${values.email}`);
     }
   }
     );// call the mutation function with the form values

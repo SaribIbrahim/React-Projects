@@ -1,7 +1,7 @@
 import Card from "../../components/Card.jsx"
 import { VStack, Icon, Text, Button, Box, Center, Container, useToast, Spinner } from '@chakra-ui/react'
 import { MdEmail } from "react-icons/md"
-import { useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useMutation } from "react-query"
 import { sendVerificationMail } from "../../api/query/userQuery.js"
 import { useEffect } from "react"
@@ -9,11 +9,8 @@ import { useEffect } from "react"
 function EmailVerification() {
 
     const toast = useToast();
-    const location = useLocation();
-    console.log(location);
-
-    const email = location.state?.email ?? "test@gmail.com"
-
+    const {email}=useParams();
+    
     const {  isLoading, mutate } = useMutation({
         mutationKey: ["send-verification-mail"],
         mutationFn: () => sendVerificationMail({ email }),// function to call the API

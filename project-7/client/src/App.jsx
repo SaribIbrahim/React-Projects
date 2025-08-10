@@ -40,7 +40,7 @@ function App() {
     element:<SignIn/>,
   },
   {
-    path:"/email-verification",
+    path:"/email-verification/:email",
     element:<EmailVerification/>,
   },
   {
@@ -52,7 +52,7 @@ function App() {
     element:<ForgotPaaword/>,
   },
   {
-    path:"/forgot-password-sent",
+    path:"/forgot-password-sent/:email",
     element:<ForgotPasswordSent/>,
   },
   {
@@ -60,7 +60,7 @@ function App() {
     element:<ResetPasswordSuccess/>,
   },
   {
-    path:"/reset-password",
+    path:"/forgot-password-verify/:token",
     element:<ResetPassword/>,
   },
 ])

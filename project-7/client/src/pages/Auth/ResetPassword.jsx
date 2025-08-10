@@ -1,11 +1,35 @@
-import { Icon, Text, Button, Center, Stack, FormControl, FormLabel, Input,  FormErrorMessage } from '@chakra-ui/react'
+import { Icon, Text, Button, Center, Stack, FormControl, FormLabel, Input,  FormErrorMessage,useToast,Spinner } from '@chakra-ui/react'
 import Card from "../../components/Card.jsx"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useMutation} from 'react-query';
+import { useNavigate,useParams } from 'react-router-dom';
+import { verifyForgotToken } from '../../api/query/userQuery.js';
+
 
 function ResetPassword() {
+
+   const toast = useToast();
+      const { token } = useParams()
+      const navigate=useNavigate()
+  
+      const { mutate,isLoading } = useMutation({
+          mutationKey: ['verify-forgot-token'],
+          mutationFn: verifyForgotToken,
+          enabled: !!token,
+          onError: (error) => {
+              toast({
+                  title: "Signup Error",
+                  description: error.message,
+                  status: "error"
+              })
+              navigate("/signup")
+          },
+          onSuccess:()=>{
+              navigate("/reset-password-success")
+          }
+      })
+  
 
    const validationSchema = Yup.object({
       password: Yup.string()
@@ -24,15 +48,20 @@ function ResetPassword() {
           repeatpassword: '',
         },
         validationSchema,
-        onSubmit: (values, { resetForm }) => {
-          console.log("Form submitted:", values);
-          setResetPassword(values);
-          resetForm();
+        onSubmit: (values ) => {
+          console.log("Form submitted:", values)
+          mutate({token,password:values.password})
+          // resetForm();
   
         },
       });
+
+       if (isLoading) {
+          return <Center h={"100vh"}>
+              <Spinner />
+          </Center>
+      }
   
-    const [resetPassword, setResetPassword] = useState({});
 
   return (
      <Center height={"100vh"}>
@@ -68,7 +97,7 @@ function ResetPassword() {
                 placeholder="Repeat New Password"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.password}
+                value={values.repeatpassword}
               />
               <FormErrorMessage>{errors.repeatpassword}</FormErrorMessage>
             </FormControl>
