@@ -44,7 +44,7 @@ function App() {
     element:<EmailVerification/>,
   },
   {
-    path:"/registration-success",
+    path:"/email-verify/:token",
     element:<RegistrationSucess/>,
   },
   {

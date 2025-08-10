@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 import Card from "../../components/Card.jsx"
 import { useMutation } from 'react-query';
 import { signUpUser } from '../../api/query/userQuery.js';
+import { useState } from "react";
 
 
 
@@ -29,15 +30,19 @@ const validationSchema = Yup.object({
 });
 
 function SignUp() {
-   
-  const navigate=useNavigate();
+  const [email,setEmail]=useState("")// for sending email data to email verification page
+  const navigate=useNavigate();//to navigate to email verification page
   const toast=useToast();
 
   const { mutate,isLoading}=  useMutation({
-      mutationKey:["signup"],
-      mutationFn:signUpUser,
+      mutationKey:["signup"],// unique key to identify the mutation
+      mutationFn:signUpUser,// function to call the API
       onSuccess:(data)=>{
-      navigate("/email-verification")
+      if(email!=""){
+        navigate("/email-verification",{
+        state:{email}// email conatains value of email from form
+      })// navigate to email verification page with email data as state
+      }
       },
       onError:(error)=>{
         toast({
@@ -59,12 +64,20 @@ function SignUp() {
     },
     validationSchema,
     onSubmit: (values,{resetForm}) => {
+      setEmail(values.email);//passing mail value in form to setter function of email
       mutate({
         firstName:values.firstName,
         lastName:values.lastName,
         email:values.email,
         password:values.password
-      });
+      },
+       {
+    onSuccess: () => {
+      navigate("/email-verification", { state: { email: values.email } });
+    }
+  }
+    );// call the mutation function with the form values
+      
       resetForm();
       
     },
@@ -84,7 +97,7 @@ function SignUp() {
             <Stack mt={"10"} spacing={"6"}>
               {/* Name + Lastname */}
               <Flex gap={"6"} flexDir={{ base: "column", sm: "row" }}>
-                <FormControl isInvalid={touched.firstnNme && !!errors.firstName}>
+                <FormControl isInvalid={touched.firstName && !!errors.firstName}>
                   <FormLabel htmlFor="firstName">Name</FormLabel>
                   <Input
                     name="firstName"
@@ -103,7 +116,7 @@ function SignUp() {
                     placeholder="Enter Your Last Name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.lastname}
+                    value={values.lastName}
                   />
                   <FormErrorMessage>{errors.lastName}</FormErrorMessage>
                 </FormControl>
