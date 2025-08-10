@@ -1,4 +1,4 @@
-import { GridItem } from "@chakra-ui/react"
+import { GridItem} from "@chakra-ui/react"
 import DashboardLayout from "../../components/DashboardLayout"
 import PortfolioSection from "./components/PortfolioSection"
 import PriceSection from "./components/PriceSection"
@@ -7,7 +7,12 @@ import Transactions from "./components/Transactions"
 import InfoCard from "./components/InfoCard"
 
 
+
+
 function Dashboard() {
+  
+
+  
   return (
      <DashboardLayout title={"Dashboard"}>
       {/* Grid layout with 2 columns on medium+ screens, 1 column on mobile */}

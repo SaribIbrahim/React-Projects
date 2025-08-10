@@ -11,11 +11,14 @@ import ForgotPaaword from "./pages/Auth/ForgotPaaword.jsx"
 import ForgotPasswordSent from "./pages/Auth/ForgotPasswordSent.jsx"
 import ResetPasswordSuccess from "./pages/Auth/ResetPasswordSuccess.jsx"
 import ResetPassword from "./pages/Auth/ResetPassword.jsx"
+import { QueryClientProvider, QueryClient } from "react-query"
+import { ReactQueryDevtools } from "react-query/devtools"
+
 
 
 function App() {
    
-
+  const queryClient = new QueryClient();
   const router =createBrowserRouter([{
     path:"/",
     element:<Dashboard/>,
@@ -63,9 +66,10 @@ function App() {
 ])
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router}/>
-    </>
+      <ReactQueryDevtools initialIsOpen={false} /> 
+    </QueryClientProvider>
   )
 }
 

@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+
 import {
    Container, Center, Text, Stack,
   FormControl, FormLabel, Input, Flex, Checkbox, Button, FormErrorMessage,
-  HStack,Box
+  HStack,Box,
+  useToast
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Card from "../../components/Card.jsx"
+import { useMutation } from 'react-query';
+import { signInUser } from '../../api/query/userQuery.js';
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -19,23 +22,38 @@ const validationSchema = Yup.object({
 });
 
 function SignIn() {
+const toast=useToast();
+
+const { mutate,isLoading}=  useMutation({
+    mutationKey:["signin"],
+    mutationFn:signInUser,
+    onSuccess:(data)=>{},
+    onError:(error)=>{
+      toast({
+        title:"Signin Error",
+        description:error.message,
+        status:"error"
+      })
+    }  
+  })
+
+ 
+
   const {
     handleBlur, handleChange, handleSubmit, values, touched, errors } = useFormik({
     initialValues: {
-
       email: '',
       password: '',
     },
     validationSchema,
     onSubmit: (values,{resetForm}) => {
-      console.log("Form submitted:", values);
-      setSignInData(values);
+      mutate(values)
       resetForm();
-      
+      console.log(mutate); 
     },
   });
 
-  const [signInData,setSignInData]=useState({});
+  
   
 
   return (
@@ -92,7 +110,7 @@ function SignIn() {
               </HStack>
 
               <Box>
-                <Button type="submit" colorScheme="purple" w={"full"}>Login</Button>
+                <Button isLoading={isLoading} type="submit" colorScheme="purple" w={"full"}>Login</Button>
                 <Link to={"/signup"}>
                   <Button w={"full"} mt={3} variant={"outline"}>
                     Create Account
