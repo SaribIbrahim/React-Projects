@@ -6,6 +6,7 @@ import Support from "./pages/Support/Support.jsx"
 import SignUp from "./pages/Auth/SignUp.jsx"
 import SignIn from "./pages/Auth/SignIn.jsx"
 import EmailVerification from "./pages/Auth/EmailVerification.jsx"
+import RegistrationSucess from "./pages/Auth/RegistrationSucess.jsx"
 
 function App() {
    
@@ -33,6 +34,10 @@ function App() {
   {
     path:"/email-verification",
     element:<EmailVerification/>,
+  },
+  {
+    path:"/registration-success",
+    element:<RegistrationSucess/>,
   },
 ])
 
