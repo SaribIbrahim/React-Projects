@@ -7,6 +7,11 @@ import SignUp from "./pages/Auth/SignUp.jsx"
 import SignIn from "./pages/Auth/SignIn.jsx"
 import EmailVerification from "./pages/Auth/EmailVerification.jsx"
 import RegistrationSucess from "./pages/Auth/RegistrationSucess.jsx"
+import ForgotPaaword from "./pages/Auth/ForgotPaaword.jsx"
+import ForgotPasswordSent from "./pages/Auth/ForgotPasswordSent.jsx"
+import ResetPasswordSuccess from "./pages/Auth/ResetPasswordSuccess.jsx"
+import ResetPassword from "./pages/Auth/ResetPassword.jsx"
+
 
 function App() {
    
@@ -38,6 +43,22 @@ function App() {
   {
     path:"/registration-success",
     element:<RegistrationSucess/>,
+  },
+  {
+    path:"/forgot-password",
+    element:<ForgotPaaword/>,
+  },
+  {
+    path:"/forgot-password-sent",
+    element:<ForgotPasswordSent/>,
+  },
+  {
+    path:"/reset-password-success",
+    element:<ResetPasswordSuccess/>,
+  },
+  {
+    path:"/reset-password",
+    element:<ResetPassword/>,
   },
 ])
 

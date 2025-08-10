@@ -3,9 +3,10 @@ import { Card as ChakraCard } from "@chakra-ui/react"
 
 
 
-    function Card({ children }) {
+    function Card({ children,showCard=false,...props }) {
         return (
-            <ChakraCard  borderRadius={{base:"none",md:"16px"}} p={{base:"none",md:"24px"}} bg={{base:"transparent",md:"white"}} boxShadow={{base:"none",md:"lg"}} w="456px">
+            <ChakraCard  borderRadius={{base : showCard? "16px":"none",md:"16px"}}
+             p={{base : showCard? "16px" : "none" , md:"24px"}} bg={{base : showCard?"white":"transparent",md:"white"}} boxShadow={{base:showCard? "md":"none",md:"lg"}} w="456px" {...props}>
                 {children}
             </ChakraCard>
         )
