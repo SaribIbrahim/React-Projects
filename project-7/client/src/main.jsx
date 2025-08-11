@@ -8,11 +8,17 @@ import "@fontsource/ubuntu";
 import "@fontsource/ubuntu/400.css";
 import "@fontsource/ubuntu/500.css";
 import "@fontsource/ubuntu/700.css";
+import AuthProvider from './Provider/AuthProvider.jsx'
+import { CookiesProvider } from 'react-cookie'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ChakraProvider theme={theme}>
-      <App />
-    </ChakraProvider> 
+    <CookiesProvider>
+      <AuthProvider>
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </AuthProvider>
+    </CookiesProvider>
   </StrictMode>
 )

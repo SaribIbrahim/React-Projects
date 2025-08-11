@@ -13,6 +13,8 @@ import ResetPasswordSuccess from "./pages/Auth/ResetPasswordSuccess.jsx"
 import ResetPassword from "./pages/Auth/ResetPassword.jsx"
 import { QueryClientProvider, QueryClient } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
+import ProtectedRoute from "./components/Auth/ProtectedRoute.jsx"
+import AlreadySignInRoute from "./components/Auth/AlreadySignInRoute.jsx"
 
 
 
@@ -21,47 +23,47 @@ function App() {
   const queryClient = new QueryClient();
   const router =createBrowserRouter([{
     path:"/",
-    element:<Dashboard/>,
+    element:<ProtectedRoute><Dashboard/></ProtectedRoute>,
   },
   {
     path:"/transactions",
-    element:<Transactions/>,
+    element:<ProtectedRoute><Transactions/></ProtectedRoute>,
   },
   {
     path:"/support",
-    element:<Support/>,
+    element:<ProtectedRoute><Support/></ProtectedRoute>,
   },
   {
     path:"/signup",
-    element:<SignUp/>,
+    element:<AlreadySignInRoute><SignUp/></AlreadySignInRoute>,
   },
   {
     path:"/signin",
-    element:<SignIn/>,
+    element:<AlreadySignInRoute><SignIn/></AlreadySignInRoute>,
   },
   {
     path:"/email-verification/:email",
-    element:<EmailVerification/>,
+    element:<AlreadySignInRoute><EmailVerification/></AlreadySignInRoute>,
   },
   {
     path:"/email-verify/:token",
-    element:<RegistrationSucess/>,
+    element:<AlreadySignInRoute><RegistrationSucess/></AlreadySignInRoute>,
   },
   {
     path:"/forgot-password",
-    element:<ForgotPaaword/>,
+    element:<AlreadySignInRoute><ForgotPaaword/></AlreadySignInRoute>,
   },
   {
     path:"/forgot-password-sent/:email",
-    element:<ForgotPasswordSent/>,
+    element:<AlreadySignInRoute><ForgotPasswordSent/></AlreadySignInRoute>,
   },
   {
     path:"/reset-password-success",
-    element:<ResetPasswordSuccess/>,
+    element:<AlreadySignInRoute><ResetPasswordSuccess/></AlreadySignInRoute>,
   },
   {
     path:"/forgot-password-verify/:token",
-    element:<ResetPassword/>,
+    element:<AlreadySignInRoute><ResetPassword/></AlreadySignInRoute>,
   },
 ])
 

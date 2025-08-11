@@ -11,6 +11,7 @@ import * as Yup from 'yup';
 import Card from "../../components/Card.jsx"
 import { useMutation } from 'react-query';
 import { signInUser } from '../../api/query/userQuery.js';
+import useAuth from "../../hooks/useAuth.js";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -22,12 +23,19 @@ const validationSchema = Yup.object({
 });
 
 function SignIn() {
+
 const toast=useToast();
+const {login}=useAuth()
 
 const { mutate,isLoading}=  useMutation({
     mutationKey:["signin"],
     mutationFn:signInUser,
-    onSuccess:(data)=>{},
+    onSuccess:(data)=>{
+      const {token}=data
+      if(token){
+        login(token)
+      }
+    },
     onError:(error)=>{
       toast({
         title:"Signin Error",

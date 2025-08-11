@@ -2,8 +2,12 @@ import React from 'react'
 import { Heading, Menu, MenuButton, MenuList, MenuItem, Button, HStack, Box, Icon } from '@chakra-ui/react'
 import { FaCircleUser } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useAuth from '../hooks/useAuth';
 
 function TopNav({ title,onOpen }) {
+    
+    const {logout}=useAuth();
+
     return (
 
         <Box  bg="white">
@@ -18,7 +22,7 @@ function TopNav({ title,onOpen }) {
                         <Icon as={FaCircleUser} fontSize="24px" />
                     </MenuButton>
                     <MenuList>
-                        <MenuItem>Logout</MenuItem>
+                        <MenuItem onClick={logout}>Logout</MenuItem>
                         <MenuItem>Support</MenuItem>
                     </MenuList>
                 </Menu>
